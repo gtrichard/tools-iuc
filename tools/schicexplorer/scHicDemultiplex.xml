@@ -21,11 +21,11 @@
 
     ]]></command>
     <inputs>
-        
+
         <param name='fastq' type="data" format="fastq, fastq.gz" label="Raw fastq file from Nagano 2017."/>
         <param name='barcodeFile' type="data" format="txt" label="barcode file" help="Use GSE94489_README.txt file "/>
         <param name='srrToSample' type="data" format="txt" label="SRR to Sample mapping file" help="The mappings from SRR number to sample id as given in the barcode file."/>
-        <param name="bufferSize" type="integer" value="20000000"  label="Buffer size" help="Number of lines to buffer in memory, if full, write the data to disk." />   
+        <param name="bufferSize" type="integer" value="20000000"  label="Buffer size" help="Number of lines to buffer in memory, if full, write the data to disk." />
 
     </inputs>
     <outputs>
@@ -40,7 +40,7 @@
             <param name='srrToSample' value='scHicDemultiplex/samples.txt' />
             <param name='bufferSize' value='1000' />
 
-            
+
             <output_collection name="outputFastqs" type="list" count="48">
                 <element name="Diploid_15_AGGCAGAA_CTCTCTAT_R1.fastq.gz" file="scHicDemultiplex/demultiplexed/Diploid_15_AGGCAGAA_CTCTCTAT_R1.fastq.gz"  ftype="fastq.gz" compare='sim_size' delta='40000'/>
                 <element name="Diploid_15_AGGCAGAA_CTCTCTAT_R2.fastq.gz" file="scHicDemultiplex/demultiplexed/Diploid_15_AGGCAGAA_CTCTCTAT_R2.fastq.gz"  ftype="fastq.gz" compare='sim_size' delta='40000'/>
@@ -100,6 +100,9 @@ Demultiplexing of raw fastq files
 
 scHicDemultiplex demultiplexes fastq files from Nagano 2017: "Cell-cycle dynamics of chromosomal organization at single-cell resolution" according their barcodes to
 a seperated forward and reverse strand fastq files per cell.
+
+This tool is mainly for test / tutorial purposes. For other datasets, a third-party demultiplexing strategy must be used.
+Afterwards, the demultiplexed mapped data can be used with HiCExplorer `hicBuildMatrix` to create single cell .cool matrices that must be stored in a .mcool file using `scHicMergeToMCool`, in order to be used for downstream analyses in the scHiCExplorer suite.
 
 For more information about scHiCExplorer please consider our documentation on readthedocs.io_
 
